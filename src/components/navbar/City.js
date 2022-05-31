@@ -13,7 +13,7 @@ const City = ({ nameCity }) => {
 
   return (
     <Link to={`/search/${nameCity}`}>
-      <div className="flex flex-col items-center text-white font-medium px-3 shadow-md shadow-black rounded-xl hover:scale-105">
+      <div className="flex flex-col items-center text-white font-medium px-3 shadow-sm shadow-black rounded-xl hover:scale-105">
         <p className="text-sm">{city.location.name}</p>
         <p className="text-2xl flex items-center">
           <img src={city.current.condition.icon} alt="icono clima" width={50} />
