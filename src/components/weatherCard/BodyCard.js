@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { BsWind } from "react-icons/bs";
 import DataContext from "../../hooks/DataContext";
 

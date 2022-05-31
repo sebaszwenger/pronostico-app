@@ -1,4 +1,3 @@
-import React from "react";
 import { BsFillJournalBookmarkFill } from "react-icons/bs";
 import PropTypes from "prop-types";
 
