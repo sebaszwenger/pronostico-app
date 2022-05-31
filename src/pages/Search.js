@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 
 import ForecastCard from "../components/forecastCard/ForecastCard";
 import WeatherCard from "../components/weatherCard/WeatherCard";
@@ -9,14 +9,11 @@ import {
   BtnSubBookmark,
 } from "../components/weatherCard/BtnBookmark";
 
-import Navbar from "../components/navbar/Navbar";
-import BookmarkContext from "../hooks/BookmarkContext";
 import DataContext from "../hooks/DataContext";
 
 const apiKey = "97a2765d7c314d8eaa842335222605";
 
-const Search = () => {
-  const [bookmark, setBookmark] = useContext(BookmarkContext);
+const Search = ({ bookmark, setBookmark }) => {
   const { id } = useParams();
   const { data } = useFetch(
     `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${id}&days=6&aqi=no&alerts=no`
@@ -34,11 +31,10 @@ const Search = () => {
     }
   }
 
-  if (!data) return <Navbar />;
+  if (!data) return <h2 className="text-white text-xl">LOADING...</h2>;
 
   return (
     <>
-      <Navbar />
       <div className="flex flex-col items-center mb-5">
         <DataContext.Provider value={data}>
           <div className="flex items-center">

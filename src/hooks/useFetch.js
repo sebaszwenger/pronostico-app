@@ -27,4 +27,5 @@ function useFetch(url) {
 useFetch.propTypes = {
   url: PropTypes.string.isRequired,
 };
+
 export default useFetch;

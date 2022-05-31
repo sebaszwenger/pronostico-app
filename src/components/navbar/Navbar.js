@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 import FavoritesNavbar from "./FavoritesNavbar";
 import HeaderApp from "./HeaderApp";
 import SearchNav from "./SearchNav";
+import PropTypes from "prop-types";
 
-const Navbar = () => {
+const Navbar = ({ bookmark }) => {
   let searchRef = useRef();
   const navigate = useNavigate();
 
@@ -30,9 +31,13 @@ const Navbar = () => {
         handleSearch={handleSearch}
       />
 
-      <FavoritesNavbar />
+      <FavoritesNavbar bookmark={bookmark} />
     </header>
   );
+};
+
+Navbar.protoType = {
+  bookmark: PropTypes.object.isRequired,
 };
 
 export default Navbar;

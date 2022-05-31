@@ -5,7 +5,7 @@ export const BtnBookmark = ({ text, className, ...props }) => {
   return (
     <button
       onClick={props.onClick}
-      className={`px-5 py-2 text-white mt-5 hover:scale-105 shadow-md shadow-black rounded-full mx-5 ${className}`}
+      className={`px-5 py-2 text-white mt-5 hover:scale-105 shadow-md shadow-gray-900 rounded-full mx-5 ${className}`}
     >
       <div className="flex flex-col items-center justify-center">
         <BsFillJournalBookmarkFill className="text-3xl pb-1" />

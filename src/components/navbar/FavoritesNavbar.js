@@ -1,10 +1,7 @@
-import { useContext } from "react";
-import BookmarkContext from "../../hooks/BookmarkContext";
 import City from "./City";
+import PropTypes from "prop-types";
 
-const FavoritesNavbar = () => {
-  const [bookmark] = useContext(BookmarkContext);
-
+const FavoritesNavbar = ({ bookmark }) => {
   return (
     <>
       {bookmark.length === 0 ? null : (
@@ -18,6 +15,10 @@ const FavoritesNavbar = () => {
       )}
     </>
   );
+};
+
+FavoritesNavbar.protoType = {
+  bookmark: PropTypes.object.isRequired,
 };
 
 export default FavoritesNavbar;

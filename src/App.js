@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import BookmarkContext from "./hooks/BookmarkContext";
+import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/Home";
 import NoMatch from "./pages/NoMatch";
 import Search from "./pages/Search";
@@ -12,13 +12,16 @@ function App() {
 
   return (
     <BrowserRouter>
-      <BookmarkContext.Provider value={[bookmark, setBookmark]}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/search/:id" element={<Search />} />
-          <Route path="*" element={<NoMatch />} />
-        </Routes>
-      </BookmarkContext.Provider>
+      <Navbar bookmark={bookmark} />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/search/:id"
+          element={<Search bookmark={bookmark} setBookmark={setBookmark} />}
+        />
+        <Route path="*" element={<NoMatch />} />
+      </Routes>
     </BrowserRouter>
   );
 }
