@@ -1,4 +1,5 @@
 import { FaSearch } from "react-icons/fa";
+import PropTypes from "prop-types";
 
 const SearchNav = ({ searchRef, handleKeyDown, handleSearch }) => {
   return (
@@ -15,6 +16,12 @@ const SearchNav = ({ searchRef, handleKeyDown, handleSearch }) => {
       </button>
     </div>
   );
+};
+
+SearchNav.propTypes = {
+  searchRef: PropTypes.object.isRequired,
+  handleKeyDown: PropTypes.func.isRequired,
+  handleSearch: PropTypes.func.isRequired,
 };
 
 export default SearchNav;

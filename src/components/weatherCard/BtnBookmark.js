@@ -1,5 +1,6 @@
 import React from "react";
 import { BsFillJournalBookmarkFill } from "react-icons/bs";
+import PropTypes from "prop-types";
 
 export const BtnBookmark = ({ text, className, ...props }) => {
   return (
@@ -36,4 +37,10 @@ export const BtnAddBookmark = (props) => {
          bg-green-600`}
     />
   );
+};
+
+BtnBookmark.propTypes = {
+  text: PropTypes.string,
+  className: PropTypes.string,
+  props: PropTypes.array,
 };

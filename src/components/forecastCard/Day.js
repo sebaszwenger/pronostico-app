@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { WiHumidity } from "react-icons/wi";
 import DataContext from "../../hooks/DataContext";
+import PropTypes from "prop-types";
 
 const Day = ({ index }) => {
   const { forecast } = useContext(DataContext);
@@ -29,6 +30,10 @@ const Day = ({ index }) => {
       </div>
     </div>
   );
+};
+
+Day.propTypes = {
+  index: PropTypes.number.isRequired,
 };
 
 export default Day;

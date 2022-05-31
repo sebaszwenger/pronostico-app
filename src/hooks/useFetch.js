@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
+import PropTypes from "prop-types";
 
 function useFetch(url) {
   const [data, setData] = useState(null);
@@ -23,4 +24,7 @@ function useFetch(url) {
   return { data, error };
 }
 
+useFetch.propTypes = {
+  url: PropTypes.string.isRequired,
+};
 export default useFetch;

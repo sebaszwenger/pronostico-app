@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
+import PropTypes from "prop-types";
 
 const apiKey = "97a2765d7c314d8eaa842335222605";
 
@@ -23,6 +24,10 @@ const City = ({ nameCity }) => {
       </div>
     </Link>
   );
+};
+
+City.propTypes = {
+  nameCity: PropTypes.string.isRequired,
 };
 
 export default City;
