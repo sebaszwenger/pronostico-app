@@ -6,7 +6,9 @@ import NoMatch from "./pages/NoMatch";
 import Search from "./pages/Search";
 
 function App() {
-  const [bookmark, setBookmark] = useState([]);
+  const [bookmark, setBookmark] = useState(
+    JSON.parse(localStorage.getItem("favoritesCitys")) || []
+  );
 
   return (
     <BrowserRouter>

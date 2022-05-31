@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import ForecastCard from "../components/forecastCard/ForecastCard";
 import WeatherCard from "../components/weatherCard/WeatherCard";
@@ -22,13 +22,16 @@ const Search = () => {
     `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${id}&days=6&aqi=no&alerts=no`
   );
 
-  function handleToggleBookmark(e) {
-    console.log(e);
-    if (!bookmark?.includes(data.location.name)) {
-      setBookmark([...bookmark, data.location.name]);
-      return;
+  useEffect(() => {
+    localStorage.setItem("favoritesCitys", JSON.stringify(bookmark));
+  }, [bookmark]);
+
+  function handleToggleBookmark() {
+    if (bookmark?.includes(data?.location.name)) {
+      setBookmark(bookmark.filter((item) => item !== data?.location.name));
+    } else {
+      setBookmark([...bookmark, data?.location.name]);
     }
-    setBookmark(bookmark.filter((item) => item !== data.location.name));
   }
 
   if (!data) return <Navbar />;
