@@ -4,6 +4,10 @@ import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/Home";
 import NoMatch from "./pages/NoMatch";
 import Search from "./pages/Search";
+import { ReactQueryDevtools } from "react-query/devtools";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient({});
 
 function App() {
   const [bookmark, setBookmark] = useState(
@@ -11,6 +15,7 @@ function App() {
   );
 
   return (
+    <QueryClientProvider client={queryClient}>
     <BrowserRouter>
       <Navbar bookmark={bookmark} />
 
@@ -23,6 +28,8 @@ function App() {
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </BrowserRouter>
+    <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }
 
