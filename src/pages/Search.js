@@ -25,7 +25,7 @@ const Search = ({ bookmark, setBookmark }) => {
 
   function handleToggleBookmark() {
     if (bookmark?.includes(data?.location.name)) {
-      setBookmark(bookmark.filter((item) => item !== data?.location.name));
+      setBookmark(bookmark?.filter((item) => item !== data?.location.name));
     } else {
       setBookmark([...bookmark, data?.location.name]);
     }
@@ -39,7 +39,7 @@ const Search = ({ bookmark, setBookmark }) => {
         <DataContext.Provider value={data}>
           <div className="flex items-center">
             <WeatherCard />
-            {bookmark.includes(data.location.name) ||
+            {bookmark?.includes(data.location.name) ||
             bookmark.length > 4 ? null : (
               <BtnAddBookmark
                 onClick={handleToggleBookmark}
