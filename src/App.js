@@ -7,7 +7,11 @@ import Search from "./pages/Search";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-const queryClient = new QueryClient({});
+const queryClient = new QueryClient({
+  defaultOptions: {
+    staleTime: 1200000,
+  },
+});
 
 function App() {
   const [bookmark, setBookmark] = useState(
@@ -16,19 +20,19 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-    <BrowserRouter>
-      <Navbar bookmark={bookmark} />
+      <BrowserRouter>
+        <Navbar bookmark={bookmark} />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/search/:id"
-          element={<Search bookmark={bookmark} setBookmark={setBookmark} />}
-        />
-        <Route path="*" element={<NoMatch />} />
-      </Routes>
-    </BrowserRouter>
-    <ReactQueryDevtools initialIsOpen={false} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/search/:id"
+            element={<Search bookmark={bookmark} setBookmark={setBookmark} />}
+          />
+          <Route path="*" element={<NoMatch />} />
+        </Routes>
+      </BrowserRouter>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }
